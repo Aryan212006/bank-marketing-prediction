@@ -7,8 +7,12 @@
 // ============================================================
 // CONFIG & INITIAL STATE
 // ============================================================
-const API_URLS = ['http://127.0.0.1:5000', 'http://127.0.0.1:8000'];
-let activeApi = API_URLS[0];
+// Dynamic API base: automatically uses the current domain on Vercel/Render or localhost
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const API_URLS = isLocal 
+  ? [window.location.origin, 'http://127.0.0.1:5000', 'http://127.0.0.1:8000']
+  : [window.location.origin];
+let activeApi = window.location.origin;
 let apiOnline = false;
 
 let allPredictions = [];
