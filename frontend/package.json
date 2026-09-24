@@ -1,0 +1,14 @@
+{
+  "name": "bank-marketing-frontend",
+  "version": "1.0.0",
+  "description": "Bank Marketing Campaign Prediction Frontend",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx --yes serve -l 3000 .",
+    "start": "npx --yes serve -l 3000 .",
+    "serve": "python -m http.server 3000"
+  },
+  "keywords": ["machine-learning", "fastapi", "bank-marketing"],
+  "author": "",
+  "license": "ISC"
+}

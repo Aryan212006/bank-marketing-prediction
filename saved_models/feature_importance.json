@@ -1,0 +1,66 @@
+[
+  {
+    "Feature": "duration",
+    "Importance": 0.47691132508502304
+  },
+  {
+    "Feature": "month",
+    "Importance": 0.08384724152854223
+  },
+  {
+    "Feature": "contact",
+    "Importance": 0.06553505062227247
+  },
+  {
+    "Feature": "age",
+    "Importance": 0.05390482897821081
+  },
+  {
+    "Feature": "poutcome",
+    "Importance": 0.0508303863710226
+  },
+  {
+    "Feature": "pdays",
+    "Importance": 0.048124764289024874
+  },
+  {
+    "Feature": "balance",
+    "Importance": 0.046792464844429144
+  },
+  {
+    "Feature": "housing",
+    "Importance": 0.044887148428072086
+  },
+  {
+    "Feature": "day",
+    "Importance": 0.041238374134941545
+  },
+  {
+    "Feature": "previous",
+    "Importance": 0.022129482548776648
+  },
+  {
+    "Feature": "campaign",
+    "Importance": 0.019603309907970122
+  },
+  {
+    "Feature": "job",
+    "Importance": 0.015868093223525656
+  },
+  {
+    "Feature": "education",
+    "Importance": 0.010562834927017355
+  },
+  {
+    "Feature": "marital",
+    "Importance": 0.010015032602966661
+  },
+  {
+    "Feature": "loan",
+    "Importance": 0.008811577466710019
+  },
+  {
+    "Feature": "default",
+    "Importance": 0.0009380850414947704
+  }
+]

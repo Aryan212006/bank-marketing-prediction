@@ -1,0 +1,167 @@
+{
+  "optimal_threshold": 0.7,
+  "max_f1_score": 0.6101,
+  "brier_score": 0.09994041108535877,
+  "threshold_curve": [
+    {
+      "Threshold": 0.2,
+      "Precision": 0.2858,
+      "Recall": 0.9679,
+      "F1-Score": 0.4413
+    },
+    {
+      "Threshold": 0.25,
+      "Precision": 0.312,
+      "Recall": 0.9527,
+      "F1-Score": 0.47
+    },
+    {
+      "Threshold": 0.3,
+      "Precision": 0.335,
+      "Recall": 0.9376,
+      "F1-Score": 0.4937
+    },
+    {
+      "Threshold": 0.35,
+      "Precision": 0.3578,
+      "Recall": 0.9216,
+      "F1-Score": 0.5155
+    },
+    {
+      "Threshold": 0.4,
+      "Precision": 0.3815,
+      "Recall": 0.9055,
+      "F1-Score": 0.5368
+    },
+    {
+      "Threshold": 0.45,
+      "Precision": 0.4031,
+      "Recall": 0.8667,
+      "F1-Score": 0.5503
+    },
+    {
+      "Threshold": 0.5,
+      "Precision": 0.4322,
+      "Recall": 0.8412,
+      "F1-Score": 0.5711
+    },
+    {
+      "Threshold": 0.55,
+      "Precision": 0.4641,
+      "Recall": 0.8129,
+      "F1-Score": 0.5909
+    },
+    {
+      "Threshold": 0.6,
+      "Precision": 0.4903,
+      "Recall": 0.7665,
+      "F1-Score": 0.5981
+    },
+    {
+      "Threshold": 0.65,
+      "Precision": 0.5209,
+      "Recall": 0.7174,
+      "F1-Score": 0.6036
+    },
+    {
+      "Threshold": 0.7,
+      "Precision": 0.5703,
+      "Recall": 0.656,
+      "F1-Score": 0.6101
+    },
+    {
+      "Threshold": 0.75,
+      "Precision": 0.5978,
+      "Recall": 0.5577,
+      "F1-Score": 0.577
+    },
+    {
+      "Threshold": 0.8,
+      "Precision": 0.6508,
+      "Recall": 0.4405,
+      "F1-Score": 0.5254
+    }
+  ],
+  "permutation_importance": [
+    {
+      "Feature": "duration",
+      "Permutation_Mean_Drop": 0.2074720204352915,
+      "Permutation_Std": 0.003460551003743409
+    },
+    {
+      "Feature": "contact",
+      "Permutation_Mean_Drop": 0.03256981130735444,
+      "Permutation_Std": 0.0017128638929706193
+    },
+    {
+      "Feature": "month",
+      "Permutation_Mean_Drop": 0.03139691268955376,
+      "Permutation_Std": 0.002271833968911546
+    },
+    {
+      "Feature": "pdays",
+      "Permutation_Mean_Drop": 0.01562497262707847,
+      "Permutation_Std": 0.0005243539573548349
+    },
+    {
+      "Feature": "housing",
+      "Permutation_Mean_Drop": 0.013961267168000524,
+      "Permutation_Std": 0.0010728855107719252
+    },
+    {
+      "Feature": "poutcome",
+      "Permutation_Mean_Drop": 0.010664087792209575,
+      "Permutation_Std": 0.0009101819467164013
+    },
+    {
+      "Feature": "day",
+      "Permutation_Mean_Drop": 0.006935972812918356,
+      "Permutation_Std": 0.0005861814142687119
+    },
+    {
+      "Feature": "age",
+      "Permutation_Mean_Drop": 0.004765220232169765,
+      "Permutation_Std": 0.00042152563166548675
+    },
+    {
+      "Feature": "balance",
+      "Permutation_Mean_Drop": 0.004504073682578302,
+      "Permutation_Std": 0.0011729057790982446
+    },
+    {
+      "Feature": "campaign",
+      "Permutation_Mean_Drop": 0.0034805809096214225,
+      "Permutation_Std": 0.0003557865743262536
+    },
+    {
+      "Feature": "previous",
+      "Permutation_Mean_Drop": 0.0026738461647725755,
+      "Permutation_Std": 0.0005140918663706156
+    },
+    {
+      "Feature": "loan",
+      "Permutation_Mean_Drop": 0.0022912526204024396,
+      "Permutation_Std": 0.00021754882791735563
+    },
+    {
+      "Feature": "education",
+      "Permutation_Mean_Drop": 0.0011079374962270406,
+      "Permutation_Std": 0.00015505463067541395
+    },
+    {
+      "Feature": "marital",
+      "Permutation_Mean_Drop": 0.001026617724869272,
+      "Permutation_Std": 0.0002598743508493834
+    },
+    {
+      "Feature": "job",
+      "Permutation_Mean_Drop": 0.000496938375711542,
+      "Permutation_Std": 0.00023188922414179864
+    },
+    {
+      "Feature": "default",
+      "Permutation_Mean_Drop": 1.7518669812122133e-05,
+      "Permutation_Std": 5.9575868162092994e-05
+    }
+  ]
+}
