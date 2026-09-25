@@ -3,420 +3,534 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>BankWise AI — Intelligent Bank Marketing Prediction &amp; Analytics</title>
-<meta name="description" content="AI-powered bank marketing prediction engine with customer analytics, prediction history, and model insights."/>
+<title>NeuroBank AI &mdash; Smart Bank Marketing Intelligence</title>
+<meta name="description" content="AI-powered bank marketing prediction engine with animated KPI dashboard, customer analytics, and model insights."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="style.css?v=2.2"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css?v=3.0"/>
 </head>
 <body>
-<div class="bg-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-<div class="app-shell">
 
-<!-- SIDEBAR -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-brand">
-    <div class="brand-icon">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="url(#g1)"/><path d="M8 18l4-5 3 3 5-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g1" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#6366F1"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs></svg>
-    </div>
-    <div class="brand-text"><span class="brand-name">BankWise AI</span><span class="brand-sub">v2.0 Analytics</span></div>
-  </div>
-  <nav class="sidebar-nav">
-    <div class="nav-section-label">Main</div>
-    <button class="nav-item active" data-page="dashboard" id="nav-dashboard" onclick="navigateTo('dashboard')">
-      <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-      <span class="nav-label">Dashboard</span>
-    </button>
-    <button class="nav-item" data-page="predict" id="nav-predict" onclick="navigateTo('predict')">
-      <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></span>
-      <span class="nav-label">New Prediction</span>
-    </button>
-    <button class="nav-item" data-page="history" id="nav-history" onclick="navigateTo('history')">
-      <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></span>
-      <span class="nav-label">Prediction History</span>
-      <span class="nav-badge" id="history-count-badge">0</span>
-    </button>
-    <div class="nav-section-label" style="margin-top:1.5rem">Analytics</div>
-    <button class="nav-item" data-page="analytics" id="nav-analytics" onclick="navigateTo('analytics')">
-      <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-4 4"/></svg></span>
-      <span class="nav-label">Model Analytics</span>
-    </button>
-    <button class="nav-item" data-page="insights" id="nav-insights" onclick="navigateTo('insights')">
-      <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4m0 4h.01"/></svg></span>
-      <span class="nav-label">Dataset Insights</span>
-    </button>
-    <button class="nav-item" data-page="about" id="nav-about" onclick="navigateTo('about')">
-      <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></span>
-      <span class="nav-label">About &amp; SOP</span>
-    </button>
-  </nav>
-  <div class="sidebar-footer">
-    <div class="api-status-pill" id="apiStatusPill">
-      <span class="status-dot" id="statusDot"></span>
-      <span id="statusText">Checking...</span>
-    </div>
-  </div>
-</aside>
+<div class="mesh-bg">
+  <div class="mesh-orb orb-a"></div>
+  <div class="mesh-orb orb-b"></div>
+  <div class="mesh-orb orb-c"></div>
+  <div class="mesh-orb orb-d"></div>
+  <div class="grid-overlay"></div>
+</div>
 
-<!-- MAIN -->
-<div class="main-content">
-  <header class="topbar">
-    <button class="sidebar-toggle" id="sidebarToggle">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-    </button>
-    <div class="topbar-title" id="pageTitle">Dashboard</div>
-    <div class="topbar-actions">
-      <button class="icon-btn" id="refreshBtn" title="Refresh">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
-      </button>
-      <button class="icon-btn" id="themeBtn" title="Toggle Theme">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      </button>
-    </div>
-  </header>
+<div class="shell">
 
-  <main class="page-container">
-
-    <!-- PAGE: DASHBOARD -->
-    <section class="page active" id="page-dashboard">
-      <div class="page-header-row">
-        <div><h1 class="page-h1">Welcome Back &#128075;</h1><p class="page-sub">BankWise AI — Intelligent Telemarketing Conversion Analytics</p></div>
-        <button class="btn btn-primary" data-page="predict" onclick="navigateTo('predict')">&#9889; New Prediction</button>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-brand">
+      <div class="sb-logo">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <rect width="34" height="34" rx="10" fill="url(#lg1)"/>
+          <path d="M9 23l5-7 4 4 8-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="25" cy="9" r="3" fill="#c4b5fd"/>
+          <defs><linearGradient id="lg1" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#7c3aed"/><stop offset="1" stop-color="#0ea5e9"/>
+          </linearGradient></defs>
+        </svg>
       </div>
-      <div class="kpi-row">
-        <div class="kpi-card glass"><div class="kpi-icon-wrap indigo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div class="kpi-body"><span class="kpi-num" id="kpi-total">0</span><span class="kpi-lbl">Total Predictions</span></div></div>
-        <div class="kpi-card glass"><div class="kpi-icon-wrap emerald"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="kpi-body"><span class="kpi-num emerald-text" id="kpi-yes">0</span><span class="kpi-lbl">Will Subscribe (YES)</span></div></div>
-        <div class="kpi-card glass"><div class="kpi-icon-wrap rose"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div><div class="kpi-body"><span class="kpi-num rose-text" id="kpi-no">0</span><span class="kpi-lbl">Will Decline (NO)</span></div></div>
-        <div class="kpi-card glass"><div class="kpi-icon-wrap amber"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="kpi-body"><span class="kpi-num amber-text" id="kpi-rate">0%</span><span class="kpi-lbl">Session Conversion Rate</span></div></div>
+      <div class="sb-brand-text">
+        <span class="sb-name">NeuroBank<span class="sb-ai"> AI</span></span>
+        <span class="sb-ver">v3.0 &middot; Intelligence Platform</span>
       </div>
-      <div class="dash-grid">
-        <div class="glass-card">
-          <div class="card-hdr"><h3>Quick Actions</h3></div>
-          <div class="quick-actions-list">
-            <button class="qa-btn" data-page="predict" onclick="navigateTo('predict')"><div class="qa-icon indigo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div><div><div class="qa-title">Run New Prediction</div><div class="qa-sub">Enter customer data and get AI prediction</div></div></button>
-            <button class="qa-btn" data-page="history" onclick="navigateTo('history')"><div class="qa-icon cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div><div><div class="qa-title">View History Table</div><div class="qa-sub">Browse, filter and export all predictions</div></div></button>
-            <button class="qa-btn" data-page="analytics" onclick="navigateTo('analytics')"><div class="qa-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-4 4"/></svg></div><div><div class="qa-title">Model Analytics</div><div class="qa-sub">View metrics, hyperparams &amp; feature weights</div></div></button>
+    </div>
+    <nav class="sb-nav">
+      <div class="sb-group-label">Overview</div>
+      <button class="sb-item active" data-page="dashboard" id="nav-dashboard" onclick="navigateTo('dashboard')">
+        <span class="sb-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+        <span class="sb-lbl">Dashboard</span>
+      </button>
+      <button class="sb-item" data-page="predict" id="nav-predict" onclick="navigateTo('predict')">
+        <span class="sb-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+        <span class="sb-lbl">Run Prediction</span>
+      </button>
+      <button class="sb-item" data-page="history" id="nav-history" onclick="navigateTo('history')">
+        <span class="sb-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v4H3z"/><path d="M3 10h18v4H3z"/><path d="M3 17h18v4H3z"/></svg></span>
+        <span class="sb-lbl">Prediction History</span>
+        <span class="sb-badge" id="history-count-badge">0</span>
+      </button>
+      <div class="sb-group-label" style="margin-top:1.2rem">Analytics</div>
+      <button class="sb-item" data-page="analytics" id="nav-analytics" onclick="navigateTo('analytics')">
+        <span class="sb-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-6 4 4 4-8"/></svg></span>
+        <span class="sb-lbl">Model Analytics</span>
+      </button>
+      <button class="sb-item" data-page="insights" id="nav-insights" onclick="navigateTo('insights')">
+        <span class="sb-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
+        <span class="sb-lbl">Dataset Insights</span>
+      </button>
+      <button class="sb-item" data-page="about" id="nav-about" onclick="navigateTo('about')">
+        <span class="sb-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        <span class="sb-lbl">About &amp; SOP</span>
+      </button>
+    </nav>
+    <div class="sb-foot">
+      <div class="api-pill" id="apiStatusPill">
+        <span class="api-dot" id="statusDot"></span>
+        <span id="statusText">Checking...</span>
+      </div>
+      <div class="sb-foot-meta">Darshan University &middot; CE Dept</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main" id="mainContent">
+    <header class="topbar">
+      <button class="topbar-menu" id="sidebarToggle" onclick="toggleSidebar()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="topbar-bc">
+        <span class="topbar-home">NeuroBank AI</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        <span id="pageTitle" class="topbar-page">Dashboard</span>
+      </div>
+      <div class="topbar-right">
+        <button class="tb-btn" id="refreshBtn" title="Refresh">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+        </button>
+        <button class="tb-btn" id="themeBtn" title="Toggle theme">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
+        <div class="tb-avatar">N</div>
+      </div>
+    </header>
+
+    <main class="pages">
+
+      <!-- ===== DASHBOARD ===== -->
+      <section class="page active" id="page-dashboard">
+        <div class="page-top">
+          <div>
+            <h1 class="page-title">Good Evening, Analyst &#128075;</h1>
+            <p class="page-sub">NeuroBank AI &mdash; Intelligent Telemarketing Conversion Intelligence</p>
+          </div>
+          <button class="btn-primary" onclick="navigateTo('predict')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            New Prediction
+          </button>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card kpi-violet">
+            <div class="kpi-hd">
+              <span class="kpi-label">Total Predictions</span>
+              <div class="kpi-ico kpi-ico-violet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            </div>
+            <div class="kpi-val" id="kpi-total">0</div>
+            <div class="kpi-trend">&#128200; Session analytics active</div>
+          </div>
+          <div class="kpi-card kpi-emerald">
+            <div class="kpi-hd">
+              <span class="kpi-label">Will Subscribe (YES)</span>
+              <div class="kpi-ico kpi-ico-emerald"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            </div>
+            <div class="kpi-val kpi-val-emerald" id="kpi-yes">0</div>
+            <div class="kpi-trend trend-up" id="kpi-yes-pct">&mdash;% of total</div>
+          </div>
+          <div class="kpi-card kpi-rose">
+            <div class="kpi-hd">
+              <span class="kpi-label">Will Decline (NO)</span>
+              <div class="kpi-ico kpi-ico-rose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+            </div>
+            <div class="kpi-val kpi-val-rose" id="kpi-no">0</div>
+            <div class="kpi-trend trend-down" id="kpi-no-pct">&mdash;% of total</div>
+          </div>
+          <div class="kpi-card kpi-amber">
+            <div class="kpi-hd">
+              <span class="kpi-label">Conversion Rate</span>
+              <div class="kpi-ico kpi-ico-amber"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            </div>
+            <div class="kpi-val kpi-val-amber" id="kpi-rate">0%</div>
+            <div class="kpi-trend">Session conversion ratio</div>
           </div>
         </div>
-        <div class="glass-card">
-          <div class="card-hdr"><h3>Model Performance</h3><span class="chip chip-green">Live</span></div>
-          <div class="metric-bars">
-            <div class="mbar-row"><span class="mbar-lbl">ROC-AUC</span><div class="mbar-track"><div class="mbar-fill indigo-fill" style="width:92.5%"></div></div><span class="mbar-val">92.5%</span></div>
-            <div class="mbar-row"><span class="mbar-lbl">Recall</span><div class="mbar-track"><div class="mbar-fill emerald-fill" style="width:84.1%"></div></div><span class="mbar-val">84.1%</span></div>
-            <div class="mbar-row"><span class="mbar-lbl">Accuracy</span><div class="mbar-track"><div class="mbar-fill cyan-fill" style="width:85.2%"></div></div><span class="mbar-val">85.2%</span></div>
-            <div class="mbar-row"><span class="mbar-lbl">F1-Score</span><div class="mbar-track"><div class="mbar-fill amber-fill" style="width:57.1%"></div></div><span class="mbar-val">57.1%</span></div>
-          </div>
-        </div>
-        <div class="glass-card col-span-2">
-          <div class="card-hdr"><h3>Recent Predictions</h3><button class="btn btn-ghost btn-sm" data-page="history" onclick="navigateTo('history')">View All &#8594;</button></div>
-          <div id="recentPredictions"><div class="empty-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><p>No predictions yet. <button class="link-btn" data-page="predict" onclick="navigateTo('predict')">Make your first prediction &#8594;</button></p></div></div>
-        </div>
-      </div>
-    </section>
 
-    <!-- PAGE: PREDICT -->
-    <section class="page" id="page-predict">
-      <div class="page-header-row">
-        <div><h1 class="page-h1">Customer Prediction</h1><p class="page-sub">Enter customer profile to get AI subscription prediction</p></div>
-        <div class="btn-group">
-          <button class="btn btn-outline btn-sm" id="loadSampleBtn">&#9889; High Sample</button>
-          <button class="btn btn-outline btn-sm" id="loadLowBtn">&#128201; Low Sample</button>
-          <button class="btn btn-ghost btn-sm" id="clearFormBtn">&#10005; Clear</button>
-        </div>
-      </div>
-      <div class="predict-layout">
-        <div class="glass-card form-panel">
-          <form id="predictionForm" novalidate>
-            <div class="form-section-title"><span class="fs-num">01</span> Client Demographics &amp; Financial Profile</div>
-            <div class="form-grid">
-              <div class="f-group"><label for="age">Age <span class="req">*</span></label><input type="number" id="age" min="18" max="100" value="35" required placeholder="e.g. 35"/></div>
-              <div class="f-group"><label for="job">Occupation <span class="req">*</span></label><select id="job" required><option value="admin.">Administrative</option><option value="blue-collar">Blue Collar</option><option value="entrepreneur">Entrepreneur</option><option value="housemaid">Housemaid</option><option value="management" selected>Management</option><option value="retired">Retired</option><option value="self-employed">Self-Employed</option><option value="services">Services</option><option value="student">Student</option><option value="technician">Technician</option><option value="unemployed">Unemployed</option><option value="unknown">Unknown</option></select></div>
-              <div class="f-group"><label for="marital">Marital Status <span class="req">*</span></label><select id="marital" required><option value="single">Single</option><option value="married" selected>Married</option><option value="divorced">Divorced/Widowed</option></select></div>
-              <div class="f-group"><label for="education">Education <span class="req">*</span></label><select id="education" required><option value="primary">Primary</option><option value="secondary">Secondary</option><option value="tertiary" selected>Tertiary/University</option><option value="unknown">Unknown</option></select></div>
-              <div class="f-group"><label for="balance">Account Balance (&#8364;) <span class="req">*</span></label><input type="number" id="balance" step="any" value="2500" required placeholder="e.g. 2500"/></div>
-              <div class="f-group"><label for="default">Credit Default? <span class="req">*</span></label><select id="default" required><option value="no" selected>No</option><option value="yes">Yes</option></select></div>
-              <div class="f-group"><label for="housing">Housing Loan? <span class="req">*</span></label><select id="housing" required><option value="no">No</option><option value="yes" selected>Yes</option></select></div>
-              <div class="f-group"><label for="loan">Personal Loan? <span class="req">*</span></label><select id="loan" required><option value="no" selected>No</option><option value="yes">Yes</option></select></div>
-            </div>
-            <div class="form-section-title" style="margin-top:1.75rem"><span class="fs-num">02</span> Campaign Contact Details</div>
-            <div class="form-grid">
-              <div class="f-group"><label for="contact">Contact Type <span class="req">*</span></label><select id="contact" required><option value="cellular" selected>Cellular</option><option value="telephone">Telephone</option><option value="unknown">Unknown</option></select></div>
-              <div class="f-group"><label for="month">Last Contact Month <span class="req">*</span></label><select id="month" required><option value="jan">January</option><option value="feb">February</option><option value="mar">March</option><option value="apr">April</option><option value="may" selected>May</option><option value="jun">June</option><option value="jul">July</option><option value="aug">August</option><option value="sep">September</option><option value="oct">October</option><option value="nov">November</option><option value="dec">December</option></select></div>
-              <div class="f-group"><label for="day">Day of Month <span class="req">*</span></label><input type="number" id="day" min="1" max="31" value="15" required/></div>
-              <div class="f-group"><label for="duration">Call Duration (sec) <span class="req">*</span></label><input type="number" id="duration" min="0" value="450" required placeholder="e.g. 450"/></div>
-            </div>
-            <div class="form-section-title" style="margin-top:1.75rem"><span class="fs-num">03</span> Campaign History</div>
-            <div class="form-grid">
-              <div class="f-group"><label for="campaign">Contacts This Campaign <span class="req">*</span></label><input type="number" id="campaign" min="1" value="1" required/></div>
-              <div class="f-group"><label for="pdays">Days Since Prior Contact <span class="req">*</span></label><input type="number" id="pdays" min="-1" value="-1" required placeholder="-1 = None"/></div>
-              <div class="f-group"><label for="previous">Previous Contacts <span class="req">*</span></label><input type="number" id="previous" min="0" value="0" required/></div>
-              <div class="f-group"><label for="poutcome">Previous Outcome <span class="req">*</span></label><select id="poutcome" required><option value="unknown" selected>Unknown</option><option value="success">Success</option><option value="failure">Failure</option><option value="other">Other</option></select></div>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
-                <span id="submitText">Predict Subscription</span>
+        <div class="dash-grid">
+          <div class="card dash-qa">
+            <div class="card-hd"><h3>Quick Actions</h3><span class="chip chip-blue">3 Tasks</span></div>
+            <div class="qa-list">
+              <button class="qa-item" onclick="navigateTo('predict')">
+                <div class="qa-ico qa-ico-violet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                <div class="qa-body"><div class="qa-title">Run New Prediction</div><div class="qa-desc">Enter customer data and get AI score</div></div>
+                <svg class="qa-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <button class="qa-item" onclick="navigateTo('history')">
+                <div class="qa-ico qa-ico-cyan"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v4H3z"/><path d="M3 10h18v4H3z"/><path d="M3 17h12v4H3z"/></svg></div>
+                <div class="qa-body"><div class="qa-title">Browse History Table</div><div class="qa-desc">Filter, sort and export all records</div></div>
+                <svg class="qa-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <button class="qa-item" onclick="navigateTo('analytics')">
+                <div class="qa-ico qa-ico-emerald"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-6 4 4 4-8"/></svg></div>
+                <div class="qa-body"><div class="qa-title">Model Analytics</div><div class="qa-desc">Metrics, hyperparams &amp; feature weights</div></div>
+                <svg class="qa-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
-          </form>
-        </div>
-        <div class="result-panel">
-          <div class="glass-card result-card" id="resultCard">
-            <div id="emptyState" class="result-empty">
-              <div class="result-empty-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div>
-              <h3>Awaiting Analysis</h3>
-              <p>Fill in the form and click <strong>Predict Subscription</strong> to see the AI result here.</p>
-              <div class="sample-hints"><button class="hint-btn" id="hintHigh">Try high-propensity sample &#8594;</button></div>
+          </div>
+
+          <div class="card dash-perf">
+            <div class="card-hd"><h3>Model Performance</h3><span class="chip chip-green"><span class="live-dot"></span>Live</span></div>
+            <div class="perf-bars">
+              <div class="pb-row"><span class="pb-lbl">ROC-AUC</span><div class="pb-track"><div class="pb-fill pb-violet" style="width:92.5%"></div></div><span class="pb-val">92.5%</span></div>
+              <div class="pb-row"><span class="pb-lbl">Recall</span><div class="pb-track"><div class="pb-fill pb-emerald" style="width:84.1%"></div></div><span class="pb-val">84.1%</span></div>
+              <div class="pb-row"><span class="pb-lbl">Accuracy</span><div class="pb-track"><div class="pb-fill pb-cyan" style="width:85.2%"></div></div><span class="pb-val">85.2%</span></div>
+              <div class="pb-row"><span class="pb-lbl">F1-Score</span><div class="pb-track"><div class="pb-fill pb-amber" style="width:57.1%"></div></div><span class="pb-val">57.1%</span></div>
+              <div class="pb-row"><span class="pb-lbl">Precision</span><div class="pb-track"><div class="pb-fill pb-rose" style="width:43.2%"></div></div><span class="pb-val">43.2%</span></div>
             </div>
-            <div id="loadingState" class="result-loading" style="display:none">
-              <div class="loader-ring"></div><p>Analyzing customer profile...</p>
+          </div>
+
+          <div class="card dash-recent">
+            <div class="card-hd"><h3>Recent Predictions</h3><button class="ghost-btn" onclick="navigateTo('history')">View All &rarr;</button></div>
+            <div id="recentPredictions">
+              <div class="empty-state"><div class="empty-icon">&#128202;</div><p>No predictions yet. <button class="link-btn" onclick="navigateTo('predict')">Make your first prediction &rarr;</button></p></div>
             </div>
-            <div id="resultContent" style="display:none">
-              <div class="result-decision" id="resultDecision">
-                <div class="decision-icon" id="decisionIcon">&#10003;</div>
-                <div class="decision-label" id="decisionLabel">SUBSCRIBED</div>
-                <div class="decision-desc" id="decisionDesc">Customer is predicted to subscribe</div>
-              </div>
-              <div class="result-metrics">
-                <div class="rm-box"><div class="rm-val" id="probabilityVal">&#8212;</div><div class="rm-lbl">Subscription Probability</div></div>
-                <div class="rm-box"><div class="rm-val" id="confidenceVal">&#8212;</div><div class="rm-lbl">Model Confidence</div></div>
-              </div>
-              <div class="prob-gauge-wrap">
-                <div class="prob-gauge-label"><span>Propensity Score</span><span id="gaugePercent">0%</span></div>
-                <div class="prob-gauge-track"><div class="prob-gauge-fill" id="gaugeFill" style="width:0%"></div></div>
-              </div>
-              <div class="recommendation-box" id="recommendationBox">
-                <div class="rec-icon">&#128161;</div>
-                <div><div class="rec-title">Strategic Recommendation</div><div class="rec-text" id="recommendationText">&#8212;</div></div>
-              </div>
-              <div class="result-meta"><span>&#129302; Tuned Random Forest (Balanced)</span><span>&#9889; &lt; 20ms Inference</span></div>
-              <button class="btn btn-outline btn-full" id="viewInHistoryBtn" data-page="history">View in History Table &#8594;</button>
-            </div>
-            <div id="errorBox" class="result-error" style="display:none">
-              <div class="error-icon-wrap">&#9888;&#65039;</div>
-              <h3 id="errorTitle">Connection Error</h3>
-              <p id="errorMessage">Unable to reach prediction backend. Ensure Flask is running.</p>
-              <button class="btn btn-outline btn-sm" id="retryBtn">Retry</button>
+          </div>
+
+          <div class="card dash-snap">
+            <div class="card-hd"><h3>Model Snapshot</h3></div>
+            <div class="snap-list">
+              <div class="snap-row"><span class="snap-k">Algorithm</span><span class="snap-v">Random Forest</span></div>
+              <div class="snap-row"><span class="snap-k">Trees</span><span class="snap-v mono">n=150</span></div>
+              <div class="snap-row"><span class="snap-k">Max Depth</span><span class="snap-v mono">14</span></div>
+              <div class="snap-row"><span class="snap-k">Balancing</span><span class="snap-v">class_weight=balanced</span></div>
+              <div class="snap-row"><span class="snap-k">CV Folds</span><span class="snap-v">5-Fold Stratified</span></div>
+              <div class="snap-row"><span class="snap-k">Dataset</span><span class="snap-v">45,211 records</span></div>
+              <div class="snap-row"><span class="snap-k">Inference</span><span class="snap-v text-emerald">&lt; 20ms</span></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PAGE: HISTORY -->
-    <section class="page" id="page-history">
-      <div class="page-header-row">
-        <div><h1 class="page-h1">Prediction History</h1><p class="page-sub">Browse, filter and export all customer predictions</p></div>
-        <div class="btn-group">
-          <button class="btn btn-outline btn-sm" id="exportCsvBtn">&#128229; Export CSV</button>
-          <button class="btn btn-danger-ghost btn-sm" id="clearHistoryBtn">&#128465; Clear All</button>
-        </div>
-      </div>
-      <div class="glass-card filters-bar">
-        <div class="filter-group"><label>Search</label><input type="text" id="searchFilter" placeholder="Search by job, outcome..." class="filter-input"/></div>
-        <div class="filter-group"><label>Decision</label><select id="decisionFilter" class="filter-select"><option value="all">All</option><option value="yes">YES (Subscribe)</option><option value="no">NO (Decline)</option></select></div>
-        <div class="filter-group"><label>Min Prob %</label><input type="number" id="minProbFilter" placeholder="0" min="0" max="100" class="filter-input filter-input-sm"/></div>
-        <div class="filter-group"><label>Max Prob %</label><input type="number" id="maxProbFilter" placeholder="100" min="0" max="100" class="filter-input filter-input-sm"/></div>
-        <button class="btn btn-ghost btn-sm" id="resetFiltersBtn">&#10005; Reset</button>
-      </div>
-      <div class="glass-card table-card">
-        <div class="table-info-row">
-          <span id="tableInfo">Showing 0 records</span>
-          <div class="page-size-wrap">Rows per page: <select id="pageSizeSelect" class="filter-select filter-select-sm"><option value="5">5</option><option value="10" selected>10</option><option value="20">20</option><option value="50">50</option></select></div>
-        </div>
-        <div class="table-wrap">
-          <table class="data-table" id="historyTable">
-            <thead>
-              <tr>
-                <th class="sortable" data-col="id"># <span class="sort-icon">&#8597;</span></th>
-                <th class="sortable" data-col="timestamp">Time <span class="sort-icon">&#8597;</span></th>
-                <th class="sortable" data-col="age">Age <span class="sort-icon">&#8597;</span></th>
-                <th class="sortable" data-col="job">Job <span class="sort-icon">&#8597;</span></th>
-                <th class="sortable" data-col="balance">Balance (&#8364;) <span class="sort-icon">&#8597;</span></th>
-                <th class="sortable" data-col="duration">Duration <span class="sort-icon">&#8597;</span></th>
-                <th class="sortable" data-col="decision">Decision <span class="sort-icon">&#8597;</span></th>
-                <th class="sortable" data-col="probability">Probability <span class="sort-icon">&#8597;</span></th>
-                <th class="sortable" data-col="confidence">Confidence <span class="sort-icon">&#8597;</span></th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="historyBody"></tbody>
-          </table>
-          <div id="historyEmpty" class="table-empty" style="display:none">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            <p>No predictions found. <button class="link-btn" data-page="predict">Make a prediction first &#8594;</button></p>
+      <!-- ===== PREDICT ===== -->
+      <section class="page" id="page-predict">
+        <div class="page-top">
+          <div><h1 class="page-title">Customer Prediction</h1><p class="page-sub">Enter a customer profile to get an AI-powered subscription prediction</p></div>
+          <div class="btn-group">
+            <button class="btn-outline btn-sm" id="loadSampleBtn">&#9889; High Sample</button>
+            <button class="btn-outline btn-sm" id="loadLowBtn">&#128201; Low Sample</button>
+            <button class="ghost-btn btn-sm" id="clearFormBtn">&#10005; Clear</button>
           </div>
         </div>
-        <div class="pagination-row" id="paginationRow">
-          <button class="pg-btn" id="pgFirst">&#171;</button>
-          <button class="pg-btn" id="pgPrev">&#8249;</button>
-          <div class="pg-pages" id="pgPages"></div>
-          <button class="pg-btn" id="pgNext">&#8250;</button>
-          <button class="pg-btn" id="pgLast">&#187;</button>
-          <span class="pg-info" id="pgInfo">Page 1 of 1</span>
-        </div>
-      </div>
-    </section>
+        <div class="predict-layout">
+          <div class="card predict-form-card">
+            <form id="predictionForm" novalidate>
+              <div class="form-sec">
+                <div class="form-sec-hd"><span class="form-sec-num">01</span><span>Client Demographics &amp; Financial Profile</span></div>
+                <div class="form-grid">
+                  <div class="fg"><label for="age">Age <span class="req">*</span></label><input type="number" id="age" min="18" max="100" value="35" required placeholder="e.g. 35"/></div>
+                  <div class="fg"><label for="job">Occupation <span class="req">*</span></label><select id="job" required><option value="admin.">Administrative</option><option value="blue-collar">Blue Collar</option><option value="entrepreneur">Entrepreneur</option><option value="housemaid">Housemaid</option><option value="management" selected>Management</option><option value="retired">Retired</option><option value="self-employed">Self-Employed</option><option value="services">Services</option><option value="student">Student</option><option value="technician">Technician</option><option value="unemployed">Unemployed</option><option value="unknown">Unknown</option></select></div>
+                  <div class="fg"><label for="marital">Marital Status <span class="req">*</span></label><select id="marital" required><option value="single">Single</option><option value="married" selected>Married</option><option value="divorced">Divorced/Widowed</option></select></div>
+                  <div class="fg"><label for="education">Education <span class="req">*</span></label><select id="education" required><option value="primary">Primary</option><option value="secondary">Secondary</option><option value="tertiary" selected>Tertiary/University</option><option value="unknown">Unknown</option></select></div>
+                  <div class="fg"><label for="balance">Account Balance (EUR) <span class="req">*</span></label><input type="number" id="balance" step="any" value="2500" required placeholder="e.g. 2500"/></div>
+                  <div class="fg"><label for="default">Credit Default? <span class="req">*</span></label><select id="default" required><option value="no" selected>No</option><option value="yes">Yes</option></select></div>
+                  <div class="fg"><label for="housing">Housing Loan? <span class="req">*</span></label><select id="housing" required><option value="no">No</option><option value="yes" selected>Yes</option></select></div>
+                  <div class="fg"><label for="loan">Personal Loan? <span class="req">*</span></label><select id="loan" required><option value="no" selected>No</option><option value="yes">Yes</option></select></div>
+                </div>
+              </div>
+              <div class="form-sec">
+                <div class="form-sec-hd"><span class="form-sec-num">02</span><span>Campaign Contact Details</span></div>
+                <div class="form-grid">
+                  <div class="fg"><label for="contact">Contact Type <span class="req">*</span></label><select id="contact" required><option value="cellular" selected>Cellular</option><option value="telephone">Telephone</option><option value="unknown">Unknown</option></select></div>
+                  <div class="fg"><label for="month">Last Contact Month <span class="req">*</span></label><select id="month" required><option value="jan">January</option><option value="feb">February</option><option value="mar">March</option><option value="apr">April</option><option value="may" selected>May</option><option value="jun">June</option><option value="jul">July</option><option value="aug">August</option><option value="sep">September</option><option value="oct">October</option><option value="nov">November</option><option value="dec">December</option></select></div>
+                  <div class="fg"><label for="day">Day of Month <span class="req">*</span></label><input type="number" id="day" min="1" max="31" value="15" required/></div>
+                  <div class="fg"><label for="duration">Call Duration (sec) <span class="req">*</span></label><input type="number" id="duration" min="0" value="450" required placeholder="e.g. 450"/></div>
+                </div>
+              </div>
+              <div class="form-sec">
+                <div class="form-sec-hd"><span class="form-sec-num">03</span><span>Campaign History</span></div>
+                <div class="form-grid">
+                  <div class="fg"><label for="campaign">Contacts This Campaign <span class="req">*</span></label><input type="number" id="campaign" min="1" value="1" required/></div>
+                  <div class="fg"><label for="pdays">Days Since Prior Contact <span class="req">*</span></label><input type="number" id="pdays" min="-1" value="-1" required placeholder="-1 = None"/></div>
+                  <div class="fg"><label for="previous">Previous Contacts <span class="req">*</span></label><input type="number" id="previous" min="0" value="0" required/></div>
+                  <div class="fg"><label for="poutcome">Previous Outcome <span class="req">*</span></label><select id="poutcome" required><option value="unknown" selected>Unknown</option><option value="success">Success</option><option value="failure">Failure</option><option value="other">Other</option></select></div>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn-primary btn-lg" id="submitBtn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  <span id="submitText">Predict Subscription</span>
+                </button>
+              </div>
+            </form>
+          </div>
 
-    <!-- PAGE: ANALYTICS -->
-    <section class="page" id="page-analytics">
-      <div class="page-header-row">
-        <div><h1 class="page-h1">Model Analytics</h1><p class="page-sub">Hyperparameters, metrics, and feature importance</p></div>
-        <span class="chip chip-green">GridSearchCV Optimized</span>
-      </div>
-      <div class="analytics-grid">
-        <div class="glass-card">
-          <div class="card-hdr"><h3>Algorithm Identification</h3></div>
-          <table class="info-table">
-            <tr><td>Algorithm</td><td><strong>Random Forest Classifier</strong></td></tr>
-            <tr><td>Optimization</td><td>GridSearchCV (5-Fold Stratified)</td></tr>
-            <tr><td>Imbalance Strategy</td><td><code>class_weight="balanced"</code></td></tr>
-            <tr><td>Features Used</td><td>16 (7 Numerical + 9 Categorical)</td></tr>
-            <tr><td>Framework</td><td>Scikit-Learn + NumPy</td></tr>
-            <tr><td>Serialization</td><td>Joblib (.pkl)</td></tr>
-          </table>
-        </div>
-        <div class="glass-card">
-          <div class="card-hdr"><h3>Tuned Hyperparameters</h3></div>
-          <table class="info-table">
-            <tr><td><code>n_estimators</code></td><td><strong>150</strong></td></tr>
-            <tr><td><code>max_depth</code></td><td><strong>14</strong></td></tr>
-            <tr><td><code>min_samples_split</code></td><td><strong>20</strong></td></tr>
-            <tr><td><code>class_weight</code></td><td><strong>balanced</strong></td></tr>
-            <tr><td><code>criterion</code></td><td><strong>Gini Impurity</strong></td></tr>
-            <tr><td><code>random_state</code></td><td><strong>42</strong></td></tr>
-          </table>
-        </div>
-        <div class="glass-card col-span-2">
-          <div class="card-hdr"><h3>Evaluation Metrics (Test Partition)</h3></div>
-          <div class="metrics-showcase">
-            <div class="metric-showcase-card indigo-card"><div class="msc-val">92.5%</div><div class="msc-lbl">ROC-AUC</div><div class="msc-sub">5-Fold CV Validated</div></div>
-            <div class="metric-showcase-card emerald-card"><div class="msc-val">84.1%</div><div class="msc-lbl">Recall</div><div class="msc-sub">Subscriber Detection</div></div>
-            <div class="metric-showcase-card cyan-card"><div class="msc-val">85.2%</div><div class="msc-lbl">Accuracy</div><div class="msc-sub">Overall Correctness</div></div>
-            <div class="metric-showcase-card amber-card"><div class="msc-val">57.1%</div><div class="msc-lbl">F1-Score</div><div class="msc-sub">Harmonic Mean</div></div>
-            <div class="metric-showcase-card rose-card"><div class="msc-val">43.2%</div><div class="msc-lbl">Precision</div><div class="msc-sub">True Positive Rate</div></div>
+          <div class="predict-result">
+            <div class="card result-card" id="resultCard">
+              <div id="emptyState" class="result-empty">
+                <div class="result-empty-blob"></div>
+                <div class="result-empty-icon">&#129504;</div>
+                <h3>Awaiting Analysis</h3>
+                <p>Fill in the form and click <strong>Predict Subscription</strong> to see the AI verdict here.</p>
+                <button class="btn-outline btn-sm" id="hintHigh">Try high-propensity sample &rarr;</button>
+              </div>
+              <div id="loadingState" class="result-loading" style="display:none">
+                <div class="spinner-ring"></div>
+                <p>Analyzing customer profile...</p>
+                <span class="loading-sub">Running Random Forest inference</span>
+              </div>
+              <div id="resultContent" style="display:none">
+                <div class="result-verdict" id="resultDecision">
+                  <div class="verdict-icon" id="decisionIcon">&#10003;</div>
+                  <div class="verdict-label" id="decisionLabel">WILL SUBSCRIBE</div>
+                  <div class="verdict-desc" id="decisionDesc">Customer is predicted to subscribe</div>
+                </div>
+                <div class="result-metrics">
+                  <div class="rm-item"><div class="rm-val" id="probabilityVal">&mdash;</div><div class="rm-lbl">Subscription Probability</div></div>
+                  <div class="rm-div"></div>
+                  <div class="rm-item"><div class="rm-val" id="confidenceVal">&mdash;</div><div class="rm-lbl">Model Confidence</div></div>
+                </div>
+                <div class="gauge-wrap">
+                  <div class="gauge-label"><span>Propensity Score</span><span id="gaugePercent" class="gauge-pct">0%</span></div>
+                  <div class="gauge-track"><div class="gauge-fill" id="gaugeFill" style="width:0%"></div></div>
+                  <div class="gauge-scale"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+                </div>
+                <div class="rec-box" id="recommendationBox">
+                  <div class="rec-ico">&#128161;</div>
+                  <div class="rec-body"><div class="rec-title">Strategic Recommendation</div><div class="rec-text" id="recommendationText">&mdash;</div></div>
+                </div>
+                <div class="result-meta"><span>&#129302; Tuned Random Forest &middot; Balanced Ensemble</span><span>&#9889; &lt;20ms Inference</span></div>
+                <button class="btn-outline btn-full" id="viewInHistoryBtn" data-page="history">View in History Table &rarr;</button>
+              </div>
+              <div id="errorBox" class="result-error" style="display:none">
+                <div class="error-emoji">&#9888;&#65039;</div>
+                <h3 id="errorTitle">Connection Error</h3>
+                <p id="errorMessage">Unable to reach prediction backend. Ensure Flask is running.</p>
+                <button class="btn-outline btn-sm" id="retryBtn">Retry</button>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="glass-card col-span-2">
-          <div class="card-hdr"><h3>Feature Importance (Gini Impurity)</h3><span class="chip chip-blue">Top 10</span></div>
-          <div id="featureImportanceList" class="feat-bars">
-            <div class="feat-bar-row"><div class="feat-bar-meta"><span>duration (Call Duration)</span><span>47.7%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:47.7%"></div></div></div>
-            <div class="feat-bar-row"><div class="feat-bar-meta"><span>month (Contact Month)</span><span>8.4%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:8.4%"></div></div></div>
-            <div class="feat-bar-row"><div class="feat-bar-meta"><span>contact (Type)</span><span>6.6%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:6.6%"></div></div></div>
-            <div class="feat-bar-row"><div class="feat-bar-meta"><span>age (Customer Age)</span><span>5.4%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:5.4%"></div></div></div>
-            <div class="feat-bar-row"><div class="feat-bar-meta"><span>poutcome (Previous Outcome)</span><span>5.1%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:5.1%"></div></div></div>
-          </div>
-        </div>
-        <div class="glass-card col-span-2">
-          <div class="card-hdr"><h3>5-Fold Stratified Cross-Validation</h3></div>
-          <div class="cv-grid">
-            <div class="cv-box"><div class="cv-val">0.9211</div><div class="cv-lbl">Mean ROC-AUC</div></div>
-            <div class="cv-box"><div class="cv-val">&#177;0.0021</div><div class="cv-lbl">Std Dev ROC-AUC</div></div>
-            <div class="cv-box"><div class="cv-val">0.5740</div><div class="cv-lbl">Mean F1-Score</div></div>
-            <div class="cv-box"><div class="cv-val">5</div><div class="cv-lbl">Folds</div></div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PAGE: INSIGHTS -->
-    <section class="page" id="page-insights">
-      <div class="page-header-row">
-        <div><h1 class="page-h1">Dataset Insights</h1><p class="page-sub">Statistical distribution and EDA from UCI Bank Marketing Dataset</p></div>
-        <span class="chip chip-blue">45,211 Records</span>
-      </div>
-      <div class="analytics-grid">
-        <div class="glass-card">
-          <div class="card-hdr"><h3>Data Source Overview</h3></div>
-          <table class="info-table">
-            <tr><td>Source</td><td>UCI ML Repository (#222)</td></tr>
-            <tr><td>Raw Records</td><td><strong>45,211</strong></td></tr>
-            <tr><td>Missing Values</td><td>0 (encoded as 'unknown')</td></tr>
-            <tr><td>Features</td><td>16 inputs + 1 target (y)</td></tr>
-            <tr><td>Domain</td><td>Direct Telemarketing / Term Deposits</td></tr>
-            <tr><td>Train / Test Split</td><td>80% / 20% (Stratified)</td></tr>
-          </table>
-        </div>
-        <div class="glass-card">
-          <div class="card-hdr"><h3>Target Class Distribution</h3></div>
-          <div class="class-dist">
-            <div class="cd-row"><div class="cd-meta"><span class="cd-label">No (Declined)</span><span class="cd-count">39,922</span><span class="cd-pct">88.3%</span></div><div class="cd-track"><div class="cd-fill cd-no" style="width:88.3%"></div></div></div>
-            <div class="cd-row" style="margin-top:1.25rem"><div class="cd-meta"><span class="cd-label">Yes (Subscribed)</span><span class="cd-count">5,289</span><span class="cd-pct">11.7%</span></div><div class="cd-track"><div class="cd-fill cd-yes" style="width:11.7%"></div></div></div>
-            <p class="cd-note">Severe class imbalance — reason for <code>class_weight="balanced"</code> strategy.</p>
+      <!-- ===== HISTORY ===== -->
+      <section class="page" id="page-history">
+        <div class="page-top">
+          <div><h1 class="page-title">Prediction History</h1><p class="page-sub">Browse, filter, sort and export all customer predictions</p></div>
+          <div class="btn-group">
+            <button class="btn-outline btn-sm" id="exportCsvBtn">&#128229; Export CSV</button>
+            <button class="btn-danger btn-sm" id="clearHistoryBtn">&#128465; Clear All</button>
           </div>
         </div>
-        <div class="glass-card col-span-2">
-          <div class="card-hdr"><h3>Key EDA Insights</h3></div>
-          <div class="insights-list">
-            <div class="insight-card"><div class="insight-num indigo-num">01</div><div class="insight-body"><h4>Call Duration is the Strongest Predictor</h4><p>Duration accounts for ~47.7% of tree splitting importance. Customers talking for &gt;400 seconds convert at 4&#215; higher rate than brief calls (&lt;150 seconds).</p><div class="insight-chip">Feature Importance: 47.7%</div></div></div>
-            <div class="insight-card"><div class="insight-num emerald-num">02</div><div class="insight-body"><h4>Previous Campaign Success Boosts Conversion</h4><p>When <code>poutcome == 'success'</code>, subscription propensity spikes to ~64%. Prior positive banking relationships are high-yield targets.</p><div class="insight-chip emerald-chip">Feature: poutcome — 5.1%</div></div></div>
-            <div class="insight-card"><div class="insight-num rose-num">03</div><div class="insight-body"><h4>Housing Loans Cause Conversion Resistance</h4><p>Clients with housing loans convert at ~7.7% vs 16.7% for those without. Constrained discretionary liquidity reduces propensity.</p><div class="insight-chip rose-chip">Feature: housing — 3.9%</div></div></div>
-            <div class="insight-card"><div class="insight-num amber-num">04</div><div class="insight-body"><h4>March, September &amp; October Show Peak Conversions</h4><p>Seasonal variation is significant. Campaigns in March and October yield disproportionately higher subscription rates aligned with financial planning cycles.</p><div class="insight-chip amber-chip">Feature: month — 8.4%</div></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- PAGE: ABOUT -->
-    <section class="page" id="page-about">
-      <div class="page-header-row">
-        <div><h1 class="page-h1">About &amp; SOP Alignment</h1><p class="page-sub">Academic project compliance — Darshan University CE Dept.</p></div>
-      </div>
-      <div class="about-layout">
-        <div class="glass-card">
-          <div class="card-hdr"><h3>Project Overview</h3></div>
-          <p class="about-p">This project is developed in strict accordance with the <strong>Darshan University Computer Engineering Department ML Project SOP (Academic Year 2025&#8211;26)</strong>, approved by HOD Prof. Rupesh G Vaishnav and Dean Dr. Gopi B Sanghani.</p>
-          <div class="callout-box"><div class="callout-icon">&#128204;</div><div><strong>SOP Scope Note (Faculty Notice)</strong><p>This project specializes in the <strong>Machine Learning Bank Marketing Project (Phase 1, Weeks 1&#8211;12)</strong>. Deep Learning models (Phase 2) are intentionally omitted in favor of rigorous tabular ML depth.</p></div></div>
+        <div class="hist-kpi-row">
+          <div class="hkpi"><span class="hkpi-val" id="hkpi-total">0</span><span class="hkpi-lbl">Total Records</span></div>
+          <div class="hkpi hkpi-green"><span class="hkpi-val" id="hkpi-yes">0</span><span class="hkpi-lbl">Subscribed</span></div>
+          <div class="hkpi hkpi-red"><span class="hkpi-val" id="hkpi-no">0</span><span class="hkpi-lbl">Declined</span></div>
+          <div class="hkpi hkpi-amber"><span class="hkpi-val" id="hkpi-rate">0%</span><span class="hkpi-lbl">Conv. Rate</span></div>
+          <div class="hkpi hkpi-violet"><span class="hkpi-val" id="hkpi-avgprob">0%</span><span class="hkpi-lbl">Avg. Probability</span></div>
         </div>
-        <div class="glass-card">
-          <div class="card-hdr"><h3>Weekly Deliverables</h3></div>
-          <div class="week-timeline">
-            <div class="week-item done"><div class="week-dot"></div><div><strong>Week 1&#8211;2:</strong> Dataset loading, EDA, Train/Test split (Zero Leakage)</div></div>
-            <div class="week-item done"><div class="week-dot"></div><div><strong>Week 3:</strong> Scratch Logistic Regression (Pure NumPy, Sigmoid + BCE Loss)</div></div>
-            <div class="week-item done"><div class="week-dot"></div><div><strong>Week 4:</strong> Benchmark Models &#8212; Sklearn LR, DT, RF, KNN + ROC Curves</div></div>
-            <div class="week-item done"><div class="week-dot"></div><div><strong>Week 5:</strong> GridSearchCV Tuning + 5-Fold Stratified Cross-Validation</div></div>
-            <div class="week-item done"><div class="week-dot"></div><div><strong>Week 6:</strong> Model Export (Joblib), Feature Importance, Artifacts</div></div>
-            <div class="week-item done"><div class="week-dot"></div><div><strong>Week 7:</strong> Flask REST API + FastAPI Compatibility Backend</div></div>
-            <div class="week-item done"><div class="week-dot"></div><div><strong>Week 8:</strong> Frontend Dashboard + Automated Test Suite (9/9 &#10003;)</div></div>
-          </div>
-        </div>
-        <div class="glass-card col-span-2">
-          <div class="card-hdr"><h3>Technical Deliverables Checklist</h3></div>
-          <div class="deliverables-grid">
-            <div class="deliv-item"><span class="deliv-check">&#10003;</span><div><strong>Dataset:</strong> UCI Bank Marketing (45,211 rows, 16 features)</div></div>
-            <div class="deliv-item"><span class="deliv-check">&#10003;</span><div><strong>Zero Leakage:</strong> Stratified split before fitting preprocessors</div></div>
-            <div class="deliv-item"><span class="deliv-check">&#10003;</span><div><strong>Scratch Algorithm:</strong> Pure NumPy Logistic Regression with BGD</div></div>
-            <div class="deliv-item"><span class="deliv-check">&#10003;</span><div><strong>Benchmark Models:</strong> Sklearn LR, Decision Tree, Random Forest, KNN</div></div>
-            <div class="deliv-item"><span class="deliv-check">&#10003;</span><div><strong>Tuning:</strong> GridSearchCV + 5-Fold Stratified CV (AUC = 0.921)</div></div>
-            <div class="deliv-item"><span class="deliv-check">&#10003;</span><div><strong>Backend:</strong> Flask 3.x REST API + FastAPI compatibility</div></div>
-            <div class="deliv-item"><span class="deliv-check">&#10003;</span><div><strong>Frontend:</strong> Modern Interactive Dashboard (this UI)</div></div>
-            <div class="deliv-item"><span class="deliv-check">&#10003;</span><div><strong>Explainability:</strong> Gini Feature Importance Analytics</div></div>
-            <div class="deliv-item"><span class="deliv-check">&#10003;</span><div><strong>Testing:</strong> 9/9 Automated Test Suite (100% pass rate)</div></div>
-            <div class="deliv-item"><span class="deliv-check">&#10003;</span><div><strong>API Docs:</strong> REST endpoints with JSON schema validation</div></div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-  </main>
+        <div class="card filter-card">
+          <div class="filter-row">
+            <div class="filter-group"><label>Search</label><input type="text" id="searchFilter" placeholder="Search by job, outcome, age..." class="filter-input"/></div>
+            <div class="filter-group"><label>Decision</label><select id="decisionFilter" class="filter-select"><option value="all">All Decisions</option><option value="yes">YES &mdash; Subscribe</option><option value="no">NO &mdash; Decline</option></select></div>
+            <div class="filter-group"><label>Min Prob %</label><input type="number" id="minProbFilter" placeholder="0" min="0" max="100" class="filter-input filter-sm"/></div>
+            <div class="filter-group"><label>Max Prob %</label><input type="number" id="maxProbFilter" placeholder="100" min="0" max="100" class="filter-input filter-sm"/></div>
+            <button class="ghost-btn btn-sm" id="resetFiltersBtn">&#10005; Reset</button>
+          </div>
+        </div>
+
+        <div class="card table-card">
+          <div class="table-toolbar">
+            <span id="tableInfo" class="table-info">Showing 0 records</span>
+            <div class="table-toolbar-right"><span class="tbl-lbl">Rows:</span><select id="pageSizeSelect" class="filter-select filter-select-sm"><option value="5">5</option><option value="10" selected>10</option><option value="20">20</option><option value="50">50</option></select></div>
+          </div>
+          <div class="table-scroll">
+            <table class="data-table" id="historyTable">
+              <thead>
+                <tr>
+                  <th class="sortable" data-col="id"># <span class="sort-icon">&#8597;</span></th>
+                  <th class="sortable" data-col="timestamp">Timestamp <span class="sort-icon">&#8597;</span></th>
+                  <th class="sortable" data-col="age">Age <span class="sort-icon">&#8597;</span></th>
+                  <th class="sortable" data-col="job">Occupation <span class="sort-icon">&#8597;</span></th>
+                  <th class="sortable" data-col="balance">Balance (EUR) <span class="sort-icon">&#8597;</span></th>
+                  <th class="sortable" data-col="duration">Duration <span class="sort-icon">&#8597;</span></th>
+                  <th class="sortable" data-col="education">Education <span class="sort-icon">&#8597;</span></th>
+                  <th class="sortable" data-col="decision">Decision <span class="sort-icon">&#8597;</span></th>
+                  <th class="sortable" data-col="probability">Probability <span class="sort-icon">&#8597;</span></th>
+                  <th class="sortable" data-col="confidence">Confidence <span class="sort-icon">&#8597;</span></th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="historyBody"></tbody>
+            </table>
+            <div id="historyEmpty" class="table-empty" style="display:none">
+              <div class="table-empty-icon">&#128203;</div>
+              <p>No predictions found. <button class="link-btn" onclick="navigateTo('predict')">Make a prediction first &rarr;</button></p>
+            </div>
+          </div>
+          <div class="pagination" id="paginationRow">
+            <button class="pg-btn" id="pgFirst">&#171;</button>
+            <button class="pg-btn" id="pgPrev">&#8249;</button>
+            <div class="pg-pages" id="pgPages"></div>
+            <button class="pg-btn" id="pgNext">&#8250;</button>
+            <button class="pg-btn" id="pgLast">&#187;</button>
+            <span class="pg-info" id="pgInfo">Page 1 of 1</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ANALYTICS ===== -->
+      <section class="page" id="page-analytics">
+        <div class="page-top">
+          <div><h1 class="page-title">Model Analytics</h1><p class="page-sub">Hyperparameters, evaluation metrics, and feature importance</p></div>
+          <span class="chip chip-violet">GridSearchCV Optimized</span>
+        </div>
+        <div class="analytics-grid">
+          <div class="card">
+            <div class="card-hd"><h3>Algorithm Identification</h3></div>
+            <table class="info-table">
+              <tr><td>Algorithm</td><td><strong>Random Forest Classifier</strong></td></tr>
+              <tr><td>Optimization</td><td>GridSearchCV (5-Fold Stratified)</td></tr>
+              <tr><td>Imbalance Strategy</td><td><code>class_weight="balanced"</code></td></tr>
+              <tr><td>Features Used</td><td>16 (7 Numerical + 9 Categorical)</td></tr>
+              <tr><td>Framework</td><td>Scikit-Learn + NumPy</td></tr>
+              <tr><td>Serialization</td><td>Joblib (.pkl)</td></tr>
+            </table>
+          </div>
+          <div class="card">
+            <div class="card-hd"><h3>Tuned Hyperparameters</h3></div>
+            <table class="info-table">
+              <tr><td><code>n_estimators</code></td><td><strong class="text-violet">150</strong></td></tr>
+              <tr><td><code>max_depth</code></td><td><strong class="text-violet">14</strong></td></tr>
+              <tr><td><code>min_samples_split</code></td><td><strong class="text-violet">20</strong></td></tr>
+              <tr><td><code>class_weight</code></td><td><strong class="text-violet">balanced</strong></td></tr>
+              <tr><td><code>criterion</code></td><td><strong class="text-violet">Gini Impurity</strong></td></tr>
+              <tr><td><code>random_state</code></td><td><strong class="text-violet">42</strong></td></tr>
+            </table>
+          </div>
+          <div class="card col-2">
+            <div class="card-hd"><h3>Evaluation Metrics (Test Partition)</h3></div>
+            <div class="metrics-showcase">
+              <div class="msc violet-msc"><div class="msc-val">92.5%</div><div class="msc-lbl">ROC-AUC</div><div class="msc-sub">5-Fold CV Validated</div></div>
+              <div class="msc emerald-msc"><div class="msc-val">84.1%</div><div class="msc-lbl">Recall</div><div class="msc-sub">Subscriber Detection</div></div>
+              <div class="msc cyan-msc"><div class="msc-val">85.2%</div><div class="msc-lbl">Accuracy</div><div class="msc-sub">Overall Correctness</div></div>
+              <div class="msc amber-msc"><div class="msc-val">57.1%</div><div class="msc-lbl">F1-Score</div><div class="msc-sub">Harmonic Mean</div></div>
+              <div class="msc rose-msc"><div class="msc-val">43.2%</div><div class="msc-lbl">Precision</div><div class="msc-sub">True Positive Rate</div></div>
+            </div>
+          </div>
+          <div class="card col-2">
+            <div class="card-hd"><h3>Feature Importance (Gini Impurity)</h3><span class="chip chip-blue">Top 10</span></div>
+            <div id="featureImportanceList" class="feat-bars">
+              <div class="feat-row"><div class="feat-meta"><span>duration (Call Duration)</span><span>47.7%</span></div><div class="feat-track"><div class="feat-fill" style="width:47.7%"></div></div></div>
+              <div class="feat-row"><div class="feat-meta"><span>month (Contact Month)</span><span>8.4%</span></div><div class="feat-track"><div class="feat-fill" style="width:8.4%"></div></div></div>
+              <div class="feat-row"><div class="feat-meta"><span>contact (Type)</span><span>6.6%</span></div><div class="feat-track"><div class="feat-fill" style="width:6.6%"></div></div></div>
+              <div class="feat-row"><div class="feat-meta"><span>age (Customer Age)</span><span>5.4%</span></div><div class="feat-track"><div class="feat-fill" style="width:5.4%"></div></div></div>
+              <div class="feat-row"><div class="feat-meta"><span>poutcome (Previous Outcome)</span><span>5.1%</span></div><div class="feat-track"><div class="feat-fill" style="width:5.1%"></div></div></div>
+            </div>
+          </div>
+          <div class="card col-2">
+            <div class="card-hd"><h3>5-Fold Stratified Cross-Validation</h3></div>
+            <div class="cv-grid">
+              <div class="cv-box"><div class="cv-val text-violet">0.9211</div><div class="cv-lbl">Mean ROC-AUC</div></div>
+              <div class="cv-box"><div class="cv-val text-amber">&plusmn;0.0021</div><div class="cv-lbl">Std Dev ROC-AUC</div></div>
+              <div class="cv-box"><div class="cv-val text-emerald">0.5740</div><div class="cv-lbl">Mean F1-Score</div></div>
+              <div class="cv-box"><div class="cv-val text-cyan">5</div><div class="cv-lbl">Folds</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== INSIGHTS ===== -->
+      <section class="page" id="page-insights">
+        <div class="page-top">
+          <div><h1 class="page-title">Dataset Insights</h1><p class="page-sub">Statistical distribution and EDA from UCI Bank Marketing Dataset</p></div>
+          <span class="chip chip-blue">45,211 Records</span>
+        </div>
+        <div class="analytics-grid">
+          <div class="card">
+            <div class="card-hd"><h3>Data Source Overview</h3></div>
+            <table class="info-table">
+              <tr><td>Source</td><td>UCI ML Repository (#222)</td></tr>
+              <tr><td>Raw Records</td><td><strong>45,211</strong></td></tr>
+              <tr><td>Missing Values</td><td>0 (encoded as 'unknown')</td></tr>
+              <tr><td>Features</td><td>16 inputs + 1 target (y)</td></tr>
+              <tr><td>Domain</td><td>Direct Telemarketing / Term Deposits</td></tr>
+              <tr><td>Train / Test Split</td><td>80% / 20% (Stratified)</td></tr>
+            </table>
+          </div>
+          <div class="card">
+            <div class="card-hd"><h3>Target Class Distribution</h3></div>
+            <div class="class-dist">
+              <div class="cd-row"><div class="cd-labels"><span class="cd-name">No (Declined)</span><span class="cd-count">39,922</span><span class="cd-pct">88.3%</span></div><div class="cd-track"><div class="cd-fill cd-no" style="width:88.3%"></div></div></div>
+              <div class="cd-row"><div class="cd-labels"><span class="cd-name">Yes (Subscribed)</span><span class="cd-count">5,289</span><span class="cd-pct">11.7%</span></div><div class="cd-track"><div class="cd-fill cd-yes" style="width:11.7%"></div></div></div>
+              <p class="cd-note">Severe class imbalance &mdash; reason for <code>class_weight="balanced"</code> strategy.</p>
+            </div>
+          </div>
+          <div class="card col-2">
+            <div class="card-hd"><h3>Key EDA Insights</h3></div>
+            <div class="insights-grid">
+              <div class="insight-card"><div class="insight-num insight-violet">01</div><div class="insight-body"><h4>Call Duration is the Strongest Predictor</h4><p>Duration accounts for ~47.7% of tree splitting importance. Customers talking for &gt;400 seconds convert at 4&times; higher rate than brief calls (&lt;150 seconds).</p><div class="insight-tag tag-violet">Feature Importance: 47.7%</div></div></div>
+              <div class="insight-card"><div class="insight-num insight-emerald">02</div><div class="insight-body"><h4>Previous Campaign Success Boosts Conversion</h4><p>When <code>poutcome == 'success'</code>, subscription propensity spikes to ~64%. Prior positive banking relationships are high-yield targets.</p><div class="insight-tag tag-emerald">Feature: poutcome &mdash; 5.1%</div></div></div>
+              <div class="insight-card"><div class="insight-num insight-rose">03</div><div class="insight-body"><h4>Housing Loans Cause Conversion Resistance</h4><p>Clients with housing loans convert at ~7.7% vs 16.7% for those without. Constrained discretionary liquidity reduces propensity.</p><div class="insight-tag tag-rose">Feature: housing &mdash; 3.9%</div></div></div>
+              <div class="insight-card"><div class="insight-num insight-amber">04</div><div class="insight-body"><h4>March, September &amp; October Show Peak Conversions</h4><p>Seasonal variation is significant. Campaigns in March and October yield disproportionately higher subscription rates aligned with financial planning cycles.</p><div class="insight-tag tag-amber">Feature: month &mdash; 8.4%</div></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ABOUT ===== -->
+      <section class="page" id="page-about">
+        <div class="page-top"><div><h1 class="page-title">About &amp; SOP Alignment</h1><p class="page-sub">Academic project compliance &mdash; Darshan University CE Dept.</p></div></div>
+        <div class="about-grid">
+          <div class="card">
+            <div class="card-hd"><h3>Project Overview</h3></div>
+            <p class="about-p">This project is developed in strict accordance with the <strong>Darshan University Computer Engineering Department ML Project SOP (Academic Year 2025&ndash;26)</strong>, approved by HOD Prof. Rupesh G Vaishnav and Dean Dr. Gopi B Sanghani.</p>
+            <div class="callout"><div class="callout-icon">&#128204;</div><div><strong>SOP Scope Note (Faculty Notice)</strong><p>This project specializes in the <strong>Machine Learning Bank Marketing Project (Phase 1, Weeks 1&ndash;12)</strong>. Deep Learning models (Phase 2) are intentionally omitted in favor of rigorous tabular ML depth.</p></div></div>
+          </div>
+          <div class="card">
+            <div class="card-hd"><h3>Weekly Deliverables</h3></div>
+            <div class="timeline">
+              <div class="tl-item tl-done"><div class="tl-dot"></div><div><strong>Week 1&ndash;2:</strong> Dataset loading, EDA, Train/Test split (Zero Leakage)</div></div>
+              <div class="tl-item tl-done"><div class="tl-dot"></div><div><strong>Week 3:</strong> Scratch Logistic Regression (Pure NumPy, Sigmoid + BCE Loss)</div></div>
+              <div class="tl-item tl-done"><div class="tl-dot"></div><div><strong>Week 4:</strong> Benchmark Models &mdash; Sklearn LR, DT, RF, KNN + ROC Curves</div></div>
+              <div class="tl-item tl-done"><div class="tl-dot"></div><div><strong>Week 5:</strong> GridSearchCV Tuning + 5-Fold Stratified Cross-Validation</div></div>
+              <div class="tl-item tl-done"><div class="tl-dot"></div><div><strong>Week 6:</strong> Model Export (Joblib), Feature Importance, Artifacts</div></div>
+              <div class="tl-item tl-done"><div class="tl-dot"></div><div><strong>Week 7:</strong> Flask REST API + FastAPI Compatibility Backend</div></div>
+              <div class="tl-item tl-done"><div class="tl-dot"></div><div><strong>Week 8:</strong> Frontend Dashboard + Automated Test Suite (9/9 &#10003;)</div></div>
+            </div>
+          </div>
+          <div class="card col-2">
+            <div class="card-hd"><h3>Technical Deliverables Checklist</h3></div>
+            <div class="deliverables-grid">
+              <div class="deliv"><span class="deliv-chk">&#10003;</span><div><strong>Dataset:</strong> UCI Bank Marketing (45,211 rows, 16 features)</div></div>
+              <div class="deliv"><span class="deliv-chk">&#10003;</span><div><strong>Zero Leakage:</strong> Stratified split before fitting preprocessors</div></div>
+              <div class="deliv"><span class="deliv-chk">&#10003;</span><div><strong>Scratch Algorithm:</strong> Pure NumPy Logistic Regression with BGD</div></div>
+              <div class="deliv"><span class="deliv-chk">&#10003;</span><div><strong>Benchmark Models:</strong> Sklearn LR, Decision Tree, Random Forest, KNN</div></div>
+              <div class="deliv"><span class="deliv-chk">&#10003;</span><div><strong>Tuning:</strong> GridSearchCV + 5-Fold Stratified CV (AUC = 0.921)</div></div>
+              <div class="deliv"><span class="deliv-chk">&#10003;</span><div><strong>Backend:</strong> Flask 3.x REST API + FastAPI compatibility</div></div>
+              <div class="deliv"><span class="deliv-chk">&#10003;</span><div><strong>Frontend:</strong> Modern Interactive Dashboard (this UI)</div></div>
+              <div class="deliv"><span class="deliv-chk">&#10003;</span><div><strong>Explainability:</strong> Gini Feature Importance Analytics</div></div>
+              <div class="deliv"><span class="deliv-chk">&#10003;</span><div><strong>Testing:</strong> 9/9 Automated Test Suite (100% pass rate)</div></div>
+              <div class="deliv"><span class="deliv-chk">&#10003;</span><div><strong>API Docs:</strong> REST endpoints with JSON schema validation</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
 </div>
-</div>
 
-<!-- Modal -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal glass-card" id="detailModal">
-    <div class="modal-header">
+  <div class="modal-box" id="detailModal">
+    <div class="modal-hd">
       <h3 id="modalTitle">Prediction Detail</h3>
-      <button class="icon-btn" id="modalClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <button class="modal-close" id="modalClose">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
     <div class="modal-body" id="modalBody"></div>
   </div>
 </div>
 
-<!-- Toast Container -->
-<div class="toast-container" id="toastContainer"></div>
-
-<script src="app.js?v=2.2"></script>
+<!-- TOAST -->
+<div class="toast-stack" id="toastContainer"></div>
+<script src="app.js?v=3.0"></script>
 </body>
 </html>

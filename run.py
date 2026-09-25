@@ -18,14 +18,17 @@ if __name__ == "__main__":
     print("  🔌 REST API:      http://127.0.0.1:5000/health")
     print("  📊 Analytics:     http://127.0.0.1:5000/api/analytics")
     print("=" * 65)
-    print("\n[INFO] Opening web browser in 1.5 seconds...")
-    
-    # Auto-open web browser
-    try:
-        time.sleep(1.5)
-        webbrowser.open("http://127.0.0.1:5000")
-    except Exception:
-        pass
-        
-    print("[INFO] Starting server. Press CTRL+C to stop.\n")
+    import threading
+
+    def open_browser():
+        time.sleep(2)
+        try:
+            webbrowser.open("http://127.0.0.1:5000")
+        except Exception:
+            pass
+
+    threading.Thread(target=open_browser, daemon=True).start()
+    print("[INFO] Starting server and opening web browser at http://127.0.0.1:5000 ...")
+    print("[INFO] Press CTRL+C to stop.\n")
     subprocess.run([sys.executable, os.path.join("backend", "flask_app.py")])
+

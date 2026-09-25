@@ -49,3 +49,4 @@ desktop.ini
 *.log
 scratch/
 check_ids.py
+generate_*.py
